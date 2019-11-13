@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>mvvm实现</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ title }}</h1>
+      <input v-model="name" />
+      <button v-on:click="change">名称更改</button>
+      <button onclick="change()">修改</button>
+    </div>
+    <script src="index.js"></script>
+    <script>
+      var Vue = new Vue({
+        el: "#app",
+        data: {
+          title: "mvvm实现",
+          name: "名字"
+        },
+        methods: {
+          change() {
+            this.name = "zhangsan";
+          }
+        },
+        mounted() {
+          alert("挂载完成");
+        }
+      });
+      Vue.title = "更改";
+
+      function change() {
+        Vue.title = "狗子你变了";
+        Vue.addopt = "新增属性";
+        console.log(Vue);
+      }
+    </script>
+  </body>
+</html>
